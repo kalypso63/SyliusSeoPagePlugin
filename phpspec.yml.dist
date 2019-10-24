@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Ipanema\SyliusSeoPagePlugin
+        psr4_prefix: Ipanema\SyliusSeoPagePlugin
