@@ -1,0 +1,12 @@
+services:
+  ipanema_sylius_seo_page_plugin.menu.generate:
+    class: Ipanema\SyliusSeoPagePlugin\Menu\AdminMenuListener
+    tags:
+      - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+  ipanema_sylius_seo_page_plugin.twig.extension.seo_page:
+    class: Ipanema\SyliusSeoPagePlugin\Twig\SeoPageExtension
+    arguments:
+      - "@ipanema_sylius_seo_page_plugin.repository.seopage"
+      - "@sylius.context.channel"
+    tags:
+      - { name: twig.extension }

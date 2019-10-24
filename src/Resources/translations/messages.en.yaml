@@ -1,0 +1,13 @@
+ipanema_sylius_seo_page_plugin:
+  ui:
+    seopages: SEO configuration
+  admin:
+    menu:
+      header: SEO
+      subheader: SEO For static pages
+      list: List
+  form:
+      code: Code
+      channels: Channels
+      meta_description: Meta description
+      meta_keywords: Meta keywords

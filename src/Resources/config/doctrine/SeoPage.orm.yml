@@ -1,0 +1,35 @@
+Ipanema\SyliusSeoPagePlugin\Entity\SeoPage:
+  type: entity
+  table: ipanema_seo_page
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    code:
+      column: code
+      type: string
+      length: 64
+      unique: true
+    enabled:
+      column: enabled
+      type: boolean
+    name:
+      column: name
+      type: string
+      length: 255
+  manyToMany:
+    channels:
+      targetEntity: Sylius\Component\Channel\Model\ChannelInterface
+      joinTable:
+        name: ipanema_seo_page_channels
+        joinColumns:
+          seo_page_id:
+            referencedColumnName: id
+            onDelete: CASCADE
+        inverseJoinColumns:
+          channel_id:
+            referencedColumnName: id
+            onDelete: CASCADE

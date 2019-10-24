@@ -1,0 +1,4 @@
+imports:
+  - { resource: "@IpanemaSyliusSeoPagePlugin/Resources/config/resources.yml" }
+  - { resource: "@IpanemaSyliusSeoPagePlugin/Resources/config/grids.yml" }
+  - { resource: "@IpanemaSyliusSeoPagePlugin/Resources/config/services.yml" }

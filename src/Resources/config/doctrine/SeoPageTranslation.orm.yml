@@ -1,0 +1,18 @@
+Ipanema\SyliusSeoPagePlugin\Entity\SeoPageTranslation:
+  type: entity
+  table: ipanema_seo_page_translation
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    metaDescription:
+      column: meta_description
+      type: text
+      nullable: true
+    metaKeywords:
+      column: meta_keywords
+      type: text
+      nullable: true

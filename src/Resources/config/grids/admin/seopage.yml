@@ -1,0 +1,55 @@
+sylius_grid:
+  grids:
+    ipanema_sylius_seo_page_plugin_admin_seopage:
+      driver:
+        name: doctrine/orm
+        options:
+          class: "%ipanema_sylius_seo_page_plugin.model.seopage.class%"
+          repository:
+            method: createListQueryBuilder
+            arguments: ["%locale%"]
+      sorting:
+        code: asc
+      limits: [10, 25, 50]
+      fields:
+        code:
+          type: string
+          label: sylius.ui.code
+          sortable: ~
+        name:
+          type: string
+          label: sylius.ui.name
+          sortable: ~
+        channels:
+          type: twig
+          label: ipanema_sylius_seo_page_plugin.form.channels
+          path: .
+          options:
+            template: "@IpanemaSyliusSeoPagePlugin/SeoPage/Grid/Field/channels.html.twig"
+        enabled:
+          type: twig
+          label: sylius.ui.enabled
+          path: enabled
+          sortable: ~
+          options:
+            template: "@SyliusUi/Grid/Field/enabled.html.twig"
+      filters:
+        search:
+          type: string
+          label: sylius.ui.search
+          options:
+            fields: [code]
+        enabled:
+          type: boolean
+      actions:
+        main:
+          create:
+            type: create
+        item:
+          update:
+            type: update
+          delete:
+            type: delete
+        bulk:
+          delete:
+            type: delete

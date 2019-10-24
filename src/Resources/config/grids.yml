@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@IpanemaSyliusSeoPagePlugin/Resources/config/grids/admin/seopage.yml" }

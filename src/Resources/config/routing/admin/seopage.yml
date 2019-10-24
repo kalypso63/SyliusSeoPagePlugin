@@ -1,0 +1,17 @@
+ipanema_sylius_seo_page_admin:
+  resource: |
+    alias: ipanema_sylius_seo_page_plugin.seopage
+    section: admin
+    templates: SyliusAdminBundle:Crud
+    redirect: update
+    grid: ipanema_sylius_seo_page_plugin_admin_seopage
+    vars:
+        all:
+            header: ipanema_sylius_seo_page_plugin.admin.menu.header
+            subheader: ipanema_sylius_seo_page_plugin.admin.menu.subheader
+            templates:
+               form: "@IpanemaSyliusSeoPagePlugin/SeoPage/Crud/_form.html.twig"
+        index:
+            icon: sticky note
+  type: sylius.resource
+
