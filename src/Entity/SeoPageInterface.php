@@ -31,6 +31,16 @@ interface SeoPageInterface extends ResourceInterface, CodeAwareInterface, Toggle
     public function setName(string $name): void;
 
     /**
+     * @return string
+     */
+    public function getRoute(): ?string;
+
+    /**
+     * @param string|null $route
+     */
+    public function setRoute(?string $route): void;
+
+    /**
      * @return string|null
      */
     public function getMetaDescription(): ?string;

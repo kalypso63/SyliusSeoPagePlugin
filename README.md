@@ -48,18 +48,27 @@ $ bin/console doctrine:migrations:migrate or php bin/console doctrine:schema:upd
 ```
 ## Use of Twig Extension
 
-Create at first {% block metatags %}{% endblock %} in your layout.html.twig if not exist
+Create at first {% block metatags %}{% endblock %} in your layout.html.twig if not exist.
 
-Twig Extension seo_page have one parameter => code of seo_page records
+2 ways exist to get data: by code or by current route.
+
+By code : Extension search record with same code (field Code on admin)
+
+By route : Extension search record with same route (field Route on admin)
 
 ```twig
 {% block metatags %}
+    {# by code #}
     {% set seoPage = seo_page('home') %}
-    {% if seoPage.metaKeywords is not empty %}
-        <meta name="keywords" content="{{ seoPage.metaKeywords }}"/>
-    {% endif %}
-    {% if seoPage.metaDescription is not empty %}
-        <meta name="description" content="{{ seoPage.metaDescription }}"/>
+    {# by route #}
+    {% set seoPage = seo_page_route(app.request.get('_route')) %}
+    {% if seoPage %}
+        {% if seoPage.metaKeywords is not empty %}
+            <meta name="keywords" content="{{ seoPage.metaKeywords }}"/>
+        {% endif %}
+        {% if seoPage.metaDescription is not empty %}
+            <meta name="description" content="{{ seoPage.metaDescription }}"/>
+        {% endif %}
     {% endif %}
 {% endblock %}
 ```

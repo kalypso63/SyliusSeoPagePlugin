@@ -9,5 +9,7 @@ ipanema_sylius_seo_page_plugin:
   form:
       code: Code
       channels: Channels
+      route: Route
+      placeholder: Select
       meta_description: Meta description
       meta_keywords: Meta keywords

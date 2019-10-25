@@ -10,3 +10,9 @@ services:
       - "@sylius.context.channel"
     tags:
       - { name: twig.extension }
+  ipanema_sylius_seo_page_plugin.form.type.seo_page:
+    class: Ipanema\SyliusSeoPagePlugin\Form\Type\SeoPageType
+    arguments:
+      - "@router.default"
+    tags:
+      - { name: form.type }

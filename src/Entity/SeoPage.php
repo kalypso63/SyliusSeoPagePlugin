@@ -36,6 +36,8 @@ class SeoPage implements SeoPageInterface
     protected $code;
     /** @var string */
     protected $name;
+    /** @var string */
+    protected $route;
     /** @var Collection|ChannelInterface[] */
     protected $channels;
 
@@ -94,6 +96,22 @@ class SeoPage implements SeoPageInterface
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRoute(): ?string
+    {
+        return $this->route;
+    }
+
+    /**
+     * @param string $route
+     */
+    public function setRoute(?string $route): void
+    {
+        $this->route = $route;
     }
 
     /**

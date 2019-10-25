@@ -40,4 +40,18 @@ class SeoPageRepository extends EntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function findEnabledByRoute(string $route, string $channelCode): ?SeoPageInterface
+    {
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.channels', 'channel')
+            ->where('o.route = :route')
+            ->andWhere('o.enabled = true')
+            ->andWhere('channel.code = :channelCode')
+            ->setParameter('route', $route)
+            ->setParameter('channelCode', $channelCode)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }

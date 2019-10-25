@@ -32,13 +32,22 @@ class SeoPageExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('seo_page', [$this, 'getSeoPage']),
+            new TwigFunction('seo_page', [$this, 'getSeoPageByCode']),
+            new TwigFunction('seo_page_route', [$this, 'getSeoPageByRoute']),
         ];
     }
 
-    public function getSeoPage($code)
+    public function getSeoPageByCode(string $code)
     {
         $channelCode = $this->channelContext->getChannel()->getCode();
+
         return $this->seoPageRepository->findEnabledByCode($code, $channelCode);
+    }
+
+    public function getSeoPageByRoute(string $route)
+    {
+        $channelCode = $this->channelContext->getChannel()->getCode();
+
+        return $this->seoPageRepository->findEnabledByRoute($route, $channelCode);
     }
 }

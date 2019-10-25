@@ -20,6 +20,11 @@ Ipanema\SyliusSeoPagePlugin\Entity\SeoPage:
       column: name
       type: string
       length: 255
+    route:
+      column: route
+      type: string
+      length: 255
+      nullable: true
   manyToMany:
     channels:
       targetEntity: Sylius\Component\Channel\Model\ChannelInterface
