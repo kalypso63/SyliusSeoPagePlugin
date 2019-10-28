@@ -17,7 +17,6 @@ use Sylius\Component\Channel\Model\ChannelInterface as BaseChannelInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
-use Ipanema\SyliusSeoPagePlugin\Entity\Traits\MergeableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
@@ -26,7 +25,6 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class SeoPage implements SeoPageInterface
 {
     use ToggleableTrait;
-    use MergeableTrait;
     use TranslatableTrait {
         __construct as private initializeTranslationsCollection;
         getTranslation as private doGetTranslation;
