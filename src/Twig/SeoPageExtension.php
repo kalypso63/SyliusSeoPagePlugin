@@ -65,19 +65,23 @@ class SeoPageExtension extends AbstractExtension
             $data = $this->seoPageRepository->findEnabledByRoute($params['route'], $channelCode);
         }
         //get record default if not result
-        if (!empty($params['default']) && $data instanceof SeoPageInterface) {
+        if (!empty($params['default'])) {
             //get default data
             $defaultData = $this->seoPageRepository->findEnabledByCode($params['default'], $channelCode);
-            //merge data with default record
-            if ($defaultData instanceof SeoPageInterface) {
-                $propertyAccessor = PropertyAccess::createPropertyAccessor();
-                $translation = $data->getTranslation();
-                $reflect = new \ReflectionClass($translation);
-                $properties = $reflect->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED);
-                foreach ($properties as $property) {
-                    $property->setAccessible(true);
-                    if (empty($property->getValue($translation))) {
-                        $property->setValue($translation, $propertyAccessor->getValue($defaultData, $property->getName()));
+            if (null === $data) {
+                $data = $defaultData;
+            } else {
+                //merge data with default record
+                if ($defaultData instanceof SeoPageInterface) {
+                    $propertyAccessor = PropertyAccess::createPropertyAccessor();
+                    $translation = $data->getTranslation();
+                    $reflect = new \ReflectionClass($translation);
+                    $properties = $reflect->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED);
+                    foreach ($properties as $property) {
+                        $property->setAccessible(true);
+                        if (empty($property->getValue($translation))) {
+                            $property->setValue($translation, $propertyAccessor->getValue($defaultData, $property->getName()));
+                        }
                     }
                 }
             }
