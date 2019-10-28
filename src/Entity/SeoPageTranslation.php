@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Symfony package.
  * (c) Ipanema <code@groupe-ipanema.com>
@@ -9,7 +11,7 @@
 
 namespace Ipanema\SyliusSeoPagePlugin\Entity;
 
-use Ipanema\SyliusSeoPagePlugin\Entity\SeoPageTranslationInterface;
+use Ipanema\SyliusSeoPagePlugin\Entity\Traits\MetaTagsTrait;
 use Sylius\Component\Resource\Model\AbstractTranslation;
 
 /**
@@ -17,6 +19,8 @@ use Sylius\Component\Resource\Model\AbstractTranslation;
  */
 class SeoPageTranslation extends AbstractTranslation implements SeoPageTranslationInterface
 {
+    use MetaTagsTrait;
+
     /** @var int */
     protected $id;
     /** @var string */
@@ -71,5 +75,4 @@ class SeoPageTranslation extends AbstractTranslation implements SeoPageTranslati
     {
         $this->metaKeywords = $metaKeywords;
     }
-
 }

@@ -9,10 +9,8 @@
 
 namespace Ipanema\SyliusSeoPagePlugin\Form\Type;
 
-use Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -32,6 +30,7 @@ class SeoPageType extends AbstractType
     {
         $this->router = $router;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -64,7 +63,7 @@ class SeoPageType extends AbstractType
             $form = $event->getForm();
             $routes = [];
             foreach ($this->router->getRouteCollection()->all() as $routeName => $route) {
-                if (0 === preg_match("#^/admin(.*)|/api(.*)|/_profiler(.*)|/_error(.*)|/_wdt(.*)|/payment(.*)|/sitemap(.*)|/media/cache/(.*)$#i", $route->getPath())) {
+                if (0 === preg_match('#^/admin(.*)|/api(.*)|/_profiler(.*)|/_error(.*)|/_wdt(.*)|/payment(.*)|/sitemap(.*)|/media/cache/(.*)$#i', $route->getPath())) {
                     $routes[$route->getPath()] = $routeName;
                 }
             }

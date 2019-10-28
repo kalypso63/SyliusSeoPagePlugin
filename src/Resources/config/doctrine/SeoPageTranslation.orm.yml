@@ -10,9 +10,70 @@ Ipanema\SyliusSeoPagePlugin\Entity\SeoPageTranslation:
   fields:
     metaDescription:
       column: meta_description
-      type: text
+      type: string
+      length: 255
       nullable: true
     metaKeywords:
       column: meta_keywords
+      type: string
+      length: 255
+      nullable: true
+    robots:
+      column: route
+      type: string
+      length: 255
+      nullable: true
+    ogTitle:
+      column: og_title
+      type: string
+      length: 255
+      nullable: true
+    ogDescription:
+      column: og_description
+      type: string
+      length: 255
+      nullable: true
+    ogImage:
+      column: og_image
+      type: string
+      length: 255
+      nullable: true
+    ogSitename:
+      column: og_sitename
+      type: string
+      length: 255
+      nullable: true
+    twitterTitle:
+      column: twitter_title
+      type: string
+      length: 255
+      nullable: true
+    twitterDescription:
+      column: twitter_description
+      type: string
+      length: 255
+      nullable: true
+    twitterImage:
+      column: twitter_image
+      type: string
+      length: 255
+      nullable: true
+    twitterImageAlt:
+      column: twitter_image_alt
+      type: string
+      length: 255
+      nullable: true
+    twitterSite:
+      column: twitter_site
+      type: string
+      length: 255
+      nullable: true
+    twitterCard:
+      column: twitter_card
+      type: string
+      length: 255
+      nullable: true
+    extraTags:
+      column: extra_tags
       type: text
       nullable: true

@@ -1,0 +1,46 @@
+{% if data %}
+    <!-- SEO -->
+    {% if data.metaDescription is not empty %}
+        <meta name="description" content="{{ data.metaDescription }}">
+    {% endif %}
+    {% if data.metaKeywords is not empty %}
+        <meta name="keywords" content="{{ data.metaKeywords }}">
+    {% endif %}
+    {% if data.robots is not empty %}
+        <meta name="robots" content="{{ data.robots }}">
+    {% endif %}
+    <!-- Open graph -->
+    {% if data.ogTitle is not empty %}
+        <meta property="og:title" content="{{ data.ogTitle }}">
+    {% endif %}
+    {% if data.ogDescription is not empty %}
+        <meta property="og:description" content="{{ data.ogDescription }}">
+    {% endif %}
+    {% if data.ogImage is not empty %}
+        <meta property="og:image" content="{{ data.ogImage }}">
+    {% endif %}
+    {% if data.ogSitename is not empty %}
+        <meta property="og:site_name" content="{{ data.ogSitename }}">
+    {% endif %}
+    {# Make sure twitter site is set because otherwise twitter cards are not possible #}
+    {% if data.twitterSite is not empty %}
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="{{ data.twitterCard ? data.twitterCard : 'summary' }}" />
+        <meta name="twitter:site" content="{{ data.twitterSite }}" />
+        {% if data.twitterTitle is not empty  %}
+            <meta name="twitter:title" content="{{ data.twitterTitle }}" />
+        {% endif %}
+        {% if data.twitterDescription is not empty %}
+            <meta name="twitter:description" content="{{ data.twitterDescription }}" />
+        {% endif %}
+        {% if data.twitterImage is not empty %}
+            <meta name="twitter:image" content="{{ data.twitterImage }}">
+        {% endif %}
+        {% if data.twitterImageAlt is not empty %}
+            <meta name="twitter:image:alt" content="{{ data.twitterImageAlt }}">
+        {% endif %}
+    {% endif %}
+    {% if data.getExtraTags() %}
+        {{ data.getExtraTags()|raw }}
+    {% endif %}
+{% endif %}

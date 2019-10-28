@@ -8,6 +8,7 @@ services:
     arguments:
       - "@ipanema_sylius_seo_page_plugin.repository.seopage"
       - "@sylius.context.channel"
+      - "@templating"
     tags:
       - { name: twig.extension }
   ipanema_sylius_seo_page_plugin.form.type.seo_page:

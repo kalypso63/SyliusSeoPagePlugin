@@ -9,15 +9,12 @@
 
 namespace Ipanema\SyliusSeoPagePlugin\Form\Type;
 
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Url;
 
 class SeoPageTranslationType extends AbstractType
 {
@@ -27,13 +24,71 @@ class SeoPageTranslationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('metaDescription', TextareaType::class, [
+            ->add('metaDescription', TextType::class, [
                 'required' => false,
                 'label' => 'ipanema_sylius_seo_page_plugin.form.meta_description',
             ])
-            ->add('metaKeywords', TextareaType::class, [
+            ->add('metaKeywords', TextType::class, [
                 'required' => false,
                 'label' => 'ipanema_sylius_seo_page_plugin.form.meta_keywords',
+            ])
+            ->add('robots', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.robots',
+            ])
+            ->add('ogTitle', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.og_title',
+            ])
+            ->add('ogDescription', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.og_description',
+            ])
+            ->add('ogImage', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.og_image',
+            ])
+            ->add('ogSitename', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.og_sitename',
+            ])
+            ->add('twitterTitle', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.twitter_title',
+            ])
+            ->add('twitterDescription', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.twitter_description',
+            ])
+            ->add('twitterImage', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.twitter_image',
+            ])
+            ->add('twitterImageAlt', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.twitter_image_alt',
+            ])
+            ->add('twitterCard', ChoiceType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.twitter_card',
+                'choices' => [
+                    'Summary' => 'summary',
+                    'Summary large image' => 'summary_large_image',
+                    'App' => 'app',
+                    'Player' => 'player',
+                ],
+                'placeholder' => 'ipanema_sylius_seo_page_plugin.form.placeholder',
+            ])
+            ->add('twitterSite', TextType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.twitter_site',
+            ])
+            ->add('extraTags', TextareaType::class, [
+                'required' => false,
+                'label' => 'ipanema_sylius_seo_page_plugin.form.extra_tags',
+                'attr' => [
+                    'placeholder' => '<meta name="generator" content="Sylius" />'
+                ]
             ])
         ;
     }

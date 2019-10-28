@@ -13,3 +13,15 @@ ipanema_sylius_seo_page_plugin:
       placeholder: Select
       meta_description: Meta description
       meta_keywords: Meta keywords
+      robots: Robots
+      og_title: Og Title
+      og_description: Og Description
+      og_image: Og Image
+      og_sitename: Og Site name
+      twitter_title: Twitter Title
+      twitter_description: Twitter Description
+      twitter_image: Twitter Image
+      twitter_image_alt: Twitter Image Alt
+      twitter_card: Twitter Card
+      twitter_site: Twitter Site
+      extra_tags: Extra tags

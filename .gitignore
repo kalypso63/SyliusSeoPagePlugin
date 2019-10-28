@@ -4,9 +4,14 @@ node_modules
 /composer.lock
 
 /etc/build/*
+/etc/.php_cs.cache
 !/etc/build/.gitignore
 
 /tests/Application/yarn.lock
 
 /behat.yml
 /phpspec.yml
+
+.DS_Store
+.idea/*
+.htaccess

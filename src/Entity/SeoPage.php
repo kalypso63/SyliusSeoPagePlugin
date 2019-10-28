@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Symfony package.
  * (c) Ipanema <code@groupe-ipanema.com>
@@ -11,12 +13,11 @@ namespace Ipanema\SyliusSeoPagePlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Channel\Model\ChannelInterface as BaseChannelInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
-use Sylius\Component\Channel\Model\ChannelInterface as BaseChannelInterface;
-
+use Ipanema\SyliusSeoPagePlugin\Entity\Traits\MergeableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
@@ -25,6 +26,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class SeoPage implements SeoPageInterface
 {
     use ToggleableTrait;
+    use MergeableTrait;
     use TranslatableTrait {
         __construct as private initializeTranslationsCollection;
         getTranslation as private doGetTranslation;
@@ -180,6 +182,198 @@ class SeoPage implements SeoPageInterface
     public function setMetaKeywords(?string $metaKeywords): void
     {
         $this->getTranslation()->setMetaDescription($metaKeywords);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRobots(): ?string
+    {
+        return $this->getTranslation()->getRobots();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setRobots(?string $robots): void
+    {
+        $this->getTranslation()->setRobots($robots);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOgTitle(): ?string
+    {
+        return $this->getTranslation()->getOgTitle();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOgTitle(?string $ogTitle): void
+    {
+        $this->getTranslation()->setOgTitle($ogTitle);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOgDescription(): ?string
+    {
+        return $this->getTranslation()->getOgTitle();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOgDescription(?string $ogDescription): void
+    {
+        $this->getTranslation()->setOgDescription($ogDescription);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOgImage(): ?string
+    {
+        return $this->getTranslation()->getOgImage();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOgImage(?string $ogImage): void
+    {
+        $this->getTranslation()->setOgImage($ogImage);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOgSitename(): ?string
+    {
+        return $this->getTranslation()->getOgSitename();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOgSitename(?string $ogSitename): void
+    {
+        $this->getTranslation()->setOgSitename($ogSitename);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTwitterTitle(): ?string
+    {
+        return $this->getTranslation()->getTwitterTitle();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTwitterTitle(?string $twitterTitle): void
+    {
+        $this->getTranslation()->setTwitterTitle($twitterTitle);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTwitterDescription(): ?string
+    {
+        return $this->getTranslation()->getTwitterDescription();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTwitterDescription(?string $twitterDescription): void
+    {
+        $this->getTranslation()->setTwitterDescription($twitterDescription);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTwitterImage(): ?string
+    {
+        return $this->getTranslation()->getTwitterImage();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTwitterImage(?string $twitterImage): void
+    {
+        $this->getTranslation()->setTwitterImage($twitterImage);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTwitterCard(): ?string
+    {
+        return $this->getTranslation()->getTwitterCard();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTwitterCard(?string $twitterCard): void
+    {
+        $this->getTranslation()->setTwitterCard($twitterCard);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTwitterImageAlt(): ?string
+    {
+        return $this->getTranslation()->getTwitterImageAlt();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTwitterImageAlt(?string $twitterImageAlt): void
+    {
+        $this->getTranslation()->setTwitterImageAlt($twitterImageAlt);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTwitterSite(): ?string
+    {
+        return $this->getTranslation()->getTwitterSite();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTwitterSite(?string $twitterSite): void
+    {
+        $this->getTranslation()->setTwitterSite($twitterSite);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExtraTags(): ?string
+    {
+        return $this->getTranslation()->getExtraTags();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setExtraTags(?string $extraTags): void
+    {
+        $this->getTranslation()->setExtraTags($extraTags);
     }
 
     /**
