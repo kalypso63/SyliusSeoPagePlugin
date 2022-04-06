@@ -14,6 +14,7 @@ use Ipanema\SyliusSeoPagePlugin\Repository\SeoPageRepository;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -25,20 +26,20 @@ class SeoPageExtension extends AbstractExtension
     /** @var ChannelContextInterface */
     private $channelContext;
 
-    /** @var EngineInterface */
-    private $templatingEngine;
+    /** @var Environment */
+    private $twig;
 
     /**
      * SeoPageExtension constructor.
      * @param SeoPageRepository $seoPageRepository
      * @param ChannelContextInterface $channelContext
-     * @param EngineInterface $templatingEngine
+     * @param Environment $twig
      */
-    public function __construct(SeoPageRepository $seoPageRepository, ChannelContextInterface $channelContext, EngineInterface $templatingEngine)
+    public function __construct(SeoPageRepository $seoPageRepository, ChannelContextInterface $channelContext, Environment $twig)
     {
         $this->seoPageRepository = $seoPageRepository;
         $this->channelContext = $channelContext;
-        $this->templatingEngine = $templatingEngine;
+        $this->templatingEngine = $twig;
     }
 
     /**
@@ -91,7 +92,7 @@ class SeoPageExtension extends AbstractExtension
             return $data;
         }
 
-        return $this->templatingEngine->render('@IpanemaSyliusSeoPagePlugin/Shop/_seo.html.twig', [
+        return $this->twig->render('@IpanemaSyliusSeoPagePlugin/Shop/_seo.html.twig', [
             'data' => $data,
         ]);
     }
