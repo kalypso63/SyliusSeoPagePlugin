@@ -39,7 +39,7 @@ class SeoPageExtension extends AbstractExtension
     {
         $this->seoPageRepository = $seoPageRepository;
         $this->channelContext = $channelContext;
-        $this->templatingEngine = $twig;
+        $this->twig = $twig;
     }
 
     /**
