@@ -2,7 +2,7 @@ ipanema_sylius_seo_page_admin:
   resource: |
     alias: ipanema_sylius_seo_page_plugin.seopage
     section: admin
-    templates: SyliusAdminBundle:Crud
+    templates: '@SyliusAdmin/Crud'
     redirect: update
     grid: ipanema_sylius_seo_page_plugin_admin_seopage
     vars:
